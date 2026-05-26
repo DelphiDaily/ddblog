@@ -1,0 +1,68 @@
+---
+import '../styles/global.css';
+
+const {
+  title = 'Delphi Daily',
+  description = 'Practical Delphi. Real-World Code. Every Day.'
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content={description} />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#05070f" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title}</title>
+  </head>
+
+  <body>
+    <div class="site-shell">
+      <header class="site-header-wrap">
+        <div class="container site-header">
+          <a class="brand" href="/" aria-label="Delphi Daily home">
+            <span class="brand-mark">DD</span>
+            <span class="brand-text">
+              <span class="brand-name">Delphi Daily</span>
+              <span class="brand-tagline">Real-world Object Pascal</span>
+            </span>
+          </a>
+
+          <nav class="nav" aria-label="Primary navigation">
+            <a href="/blog/">Blog</a>
+            <a href="/about/">About</a>
+            <a href="/rss.xml">RSS</a>
+          </nav>
+
+          <a class="header-cta" href="/blog/">Start reading →</a>
+        </div>
+      </header>
+
+      <main class="site-main">
+        <slot />
+      </main>
+
+      <footer class="site-footer">
+        <div class="container footer-grid">
+          <div>
+            <strong>Delphi Daily</strong>
+            <p>
+              Practical Delphi. Real-World Code. Every Day. Independent developer notes for Delphi, Object Pascal, VCL, FireDAC, SQL Server, and native Windows software.
+            </p>
+            <p>
+              Delphi is a trademark of Embarcadero Technologies. Delphi Daily is an independent developer blog and is not affiliated with Embarcadero.
+            </p>
+          </div>
+
+          <div class="footer-links">
+            <a href="/blog/">Blog</a>
+            <a href="/about/">About</a>
+            <a href="/rss.xml">RSS</a>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>

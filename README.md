@@ -1,63 +1,56 @@
-# Astro Starter Kit: Blog
+# Delphi Daily Astro Blog
 
-```sh
-npm create astro@latest -- --template blog
+A fast, minimal Astro blog template for **Delphi Daily**.
+
+**Slogan:** Practical Delphi. Real-World Code. Every Day.
+
+## Local setup
+
+```powershell
+npm install
+npm run dev
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
-
-Features:
-
-- ✅ Minimal styling (make it your own!)
-- ✅ 100/100 Lighthouse performance
-- ✅ SEO-friendly with canonical URLs and Open Graph data
-- ✅ Sitemap support
-- ✅ RSS Feed support
-- ✅ Markdown & MDX support
-
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
+Open:
 
 ```text
-├── public/
-├── src/
-│   ├── assets/
-│   ├── components/
-│   ├── content/
-│   ├── layouts/
-│   └── pages/
-├── astro.config.mjs
-├── README.md
-├── package.json
-└── tsconfig.json
+http://localhost:4321
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## Build
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+```powershell
+npm run build
+npm run preview
+```
 
-The `src/content/` directory contains "collections" of related Markdown and MDX documents. Use `getCollection()` to retrieve posts from `src/content/blog/`, and type-check your frontmatter using an optional schema. See [Astro's Content Collections docs](https://docs.astro.build/en/guides/content-collections/) to learn more.
+## Vercel settings
 
-Any static assets, like images, can be placed in the `public/` directory.
+```text
+Framework Preset: Astro
+Root Directory: ./
+Build Command: npm run build
+Output Directory: dist
+Install Command: Auto / blank
+Environment Variables: blank
+```
 
-## 🧞 Commands
+## Add a new post
 
-All commands are run from the root of the project, from a terminal:
+Create a new Markdown file under:
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+```text
+src/content/blog/
+```
 
-## 👀 Want to learn more?
+Example:
 
-Check out [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+```text
+src/content/blog/how-to-connect-delphi-to-sql-server.md
+```
 
-## Credit
+## License
 
-This theme is based off of the lovely [Bear Blog](https://github.com/HermanMartinus/bearblog/).
+Source code is licensed under the MIT License.
+
+Blog posts, written content, and original images are licensed under CC BY 4.0, unless otherwise noted.

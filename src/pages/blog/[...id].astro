@@ -1,0 +1,48 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog', ({ data }) => {
+    return import.meta.env.PROD ? data.draft !== true : true;
+  });
+
+  return posts.map((post) => ({
+    params: {
+      id: post.id
+    },
+    props: {
+      post
+    }
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+
+const pageTitle = `${post.data.title} | Delphi Daily`;
+---
+
+<BaseLayout title={pageTitle} description={post.data.description}>
+  <article class="article-wrap">
+    <header class="article-header">
+      <p class="eyebrow">Delphi Daily</p>
+      <h1><span class="gradient-text">{post.data.title}</span></h1>
+      <p class="post-meta">
+        <span>Published on {post.data.pubDate.toLocaleDateString('en-US')}</span>
+        <span>•</span>
+        <span>{post.data.author}</span>
+      </p>
+
+      {post.data.tags.length > 0 && (
+        <div class="tag-row">
+          {post.data.tags.map((tag) => <span class="tag">{tag}</span>)}
+        </div>
+      )}
+    </header>
+
+    <div class="article-content">
+      <Content />
+    </div>
+  </article>
+</BaseLayout>
