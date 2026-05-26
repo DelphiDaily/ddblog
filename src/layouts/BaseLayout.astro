@@ -5,6 +5,8 @@ const {
   title = 'Delphi Daily',
   description = 'Practical Delphi. Real-World Code. Every Day.'
 } = Astro.props;
+
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site || 'https://delphidaily.com');
 ---
 
 <!doctype html>
@@ -13,30 +15,30 @@ const {
     <meta charset="UTF-8" />
     <meta name="description" content={description} />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#05070f" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="canonical" href={canonicalUrl} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="alternate" type="application/rss+xml" title="Delphi Daily RSS" href="/rss.xml" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalUrl} />
     <title>{title}</title>
   </head>
 
   <body>
     <div class="site-shell">
-      <header class="site-header-wrap">
-        <div class="container site-header">
+      <header class="site-header">
+        <div class="header-inner">
           <a class="brand" href="/" aria-label="Delphi Daily home">
             <span class="brand-mark">DD</span>
-            <span class="brand-text">
-              <span class="brand-name">Delphi Daily</span>
-              <span class="brand-tagline">Real-world Object Pascal</span>
-            </span>
+            <span>Delphi Daily</span>
           </a>
 
-          <nav class="nav" aria-label="Primary navigation">
+          <nav class="site-nav" aria-label="Main navigation">
             <a href="/blog/">Blog</a>
             <a href="/about/">About</a>
             <a href="/rss.xml">RSS</a>
           </nav>
-
-          <a class="header-cta" href="/blog/">Start reading →</a>
         </div>
       </header>
 
@@ -45,22 +47,9 @@ const {
       </main>
 
       <footer class="site-footer">
-        <div class="container footer-grid">
-          <div>
-            <strong>Delphi Daily</strong>
-            <p>
-              Practical Delphi. Real-World Code. Every Day. Independent developer notes for Delphi, Object Pascal, VCL, FireDAC, SQL Server, and native Windows software.
-            </p>
-            <p>
-              Delphi is a trademark of Embarcadero Technologies. Delphi Daily is an independent developer blog and is not affiliated with Embarcadero.
-            </p>
-          </div>
-
-          <div class="footer-links">
-            <a href="/blog/">Blog</a>
-            <a href="/about/">About</a>
-            <a href="/rss.xml">RSS</a>
-          </div>
+        <div class="footer-inner">
+          <span>© {new Date().getFullYear()} Delphi Daily</span>
+          <span>Independent Delphi and Object Pascal notes.</span>
         </div>
       </footer>
     </div>

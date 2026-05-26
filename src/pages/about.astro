@@ -3,45 +3,26 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
 <BaseLayout title="About | Delphi Daily" description="About Delphi Daily, an independent Delphi and Object Pascal blog.">
-  <section class="page-hero">
-    <div class="container">
-      <p class="eyebrow">About</p>
-      <h1 class="page-title"><span class="gradient-text">A practical Delphi journal</span> for real-world developers.</h1>
-      <p class="page-lead">
-        Delphi Daily focuses on the kind of code that survives contact with production: database applications, VCL screens, integrations, reports, services, and maintenance-friendly architecture.
+  <section class="article-header">
+    <div class="reading-container">
+      <p class="kicker">About</p>
+      <h1>Independent notes for practical Delphi developers.</h1>
+      <p class="article-description">
+        Delphi Daily focuses on Object Pascal, VCL, FireDAC, SQL Server, Windows services,
+        integration work, and the unglamorous code that quietly runs real companies.
       </p>
     </div>
   </section>
 
-  <section class="section">
-    <div class="container info-grid">
-      <article class="info-card">
-        <h3>What this blog covers</h3>
-        <p>
-          Delphi, Object Pascal, VCL, FireDAC, SQL Server, Windows services, REST integrations, reporting, performance tuning, refactoring, and production notes.
-        </p>
-      </article>
+  <article class="reading-container article-content">
+    <p>
+      The goal is simple: publish clear, tested, production-minded Delphi content for developers
+      who build and maintain real-world business applications.
+    </p>
 
-      <article class="info-card">
-        <h3>Editorial direction</h3>
-        <p>
-          Short enough to read with coffee, deep enough to save a workday. The aim is reusable knowledge, not shiny demo smoke.
-        </p>
-      </article>
-
-      <article class="info-card">
-        <h3>Tagline</h3>
-        <p>
-          Practical Delphi. Real-World Code. Every Day.
-        </p>
-      </article>
-
-      <article class="info-card">
-        <h3>Independence note</h3>
-        <p>
-          Delphi Daily is an independent developer blog and is not affiliated with Embarcadero Technologies.
-        </p>
-      </article>
-    </div>
-  </section>
+    <p>
+      Delphi is a trademark of Embarcadero Technologies. Delphi Daily is an independent developer blog
+      and is not affiliated with Embarcadero.
+    </p>
+  </article>
 </BaseLayout>

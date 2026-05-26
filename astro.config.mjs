@@ -3,15 +3,12 @@ import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
   site: 'https://delphidaily.com',
-  integrations: [
-    sitemap()
-  ],
+  integrations: [sitemap()],
   markdown: {
+    syntaxHighlight: 'shiki',
     shikiConfig: {
-      themes: {
-        light: 'github-light',
-        dark: 'github-dark'
-      }
+      theme: 'github-light',
+      wrap: false
     }
   }
 });

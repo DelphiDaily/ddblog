@@ -6,131 +6,66 @@ const posts = (await getCollection('blog', ({ data }) => {
   return import.meta.env.PROD ? data.draft !== true : true;
 }))
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
-  .slice(0, 3);
-
-const features = [
-  {
-    icon: 'VCL',
-    title: 'Native Windows craft',
-    copy: 'Practical patterns for VCL screens, services, reports, installers, and desktop business applications.'
-  },
-  {
-    icon: 'DB',
-    title: 'Database-first thinking',
-    copy: 'FireDAC, SQL Server, transactions, performance notes, and clean data access strategies.'
-  },
-  {
-    icon: 'API',
-    title: 'Integration notes',
-    copy: 'REST, JSON, SFTP, queues, file parsing, and the small glue code that keeps real systems breathing.'
-  },
-  {
-    icon: 'OPS',
-    title: 'Production habits',
-    copy: 'Error handling, logging, deployment, refactoring, and field-tested engineering decisions.'
-  }
-];
+  .slice(0, 4);
 ---
 
 <BaseLayout>
   <section class="hero">
     <div class="container hero-grid">
       <div>
-        <p class="eyebrow">Delphi • Object Pascal • VCL • FireDAC</p>
-        <h1><span class="gradient-text">Practical Delphi.</span><br />Real-World Code. Every Day.</h1>
-        <p class="hero-lead">
-          Delphi Daily is an independent engineering blog for developers who build production software with Delphi, Object Pascal, SQL Server, native Windows tools, and a little terminal magic.
+        <p class="kicker">Delphi • Object Pascal • VCL • FireDAC</p>
+        <h1>Practical Delphi. Real-World Code. Every Day.</h1>
+        <p>
+          A clean, independent publication for Delphi developers building real business applications,
+          native Windows tools, database systems, and production-grade software.
         </p>
 
-        <div class="hero-actions">
-          <a class="button button-primary" href="/blog/">Explore articles →</a>
-          <a class="button button-secondary" href="/about/">About the blog</a>
+        <div class="button-row">
+          <a class="button primary" href="/blog/">Start reading</a>
+          <a class="button secondary" href="/about/">About the blog</a>
         </div>
       </div>
 
-      <aside class="hero-card" aria-label="Delphi code preview">
-        <div class="code-window">
-          <div class="window-dots"><span></span><span></span><span></span></div>
-          <pre><code>type
-  TBlogPost = record
-    Title: string;
-    Tags: TArray&lt;string&gt;;
-    PublishedAt: TDateTime;
-  end;
-
-procedure PublishDailyNote;
-begin
-  WriteLn('Ship useful Delphi notes.');
-end;</code></pre>
-
-          <div class="stat-strip">
-            <div class="stat-card">
-              <span class="stat-value">VCL</span>
-              <span class="stat-label">UI patterns</span>
-            </div>
-            <div class="stat-card">
-              <span class="stat-value">SQL</span>
-              <span class="stat-label">Data work</span>
-            </div>
-            <div class="stat-card">
-              <span class="stat-value">API</span>
-              <span class="stat-label">Integrations</span>
-            </div>
-          </div>
-        </div>
+      <aside class="hero-card">
+        <strong>Clean by design.</strong>
+        <p>
+          Medium-style reading, Astro speed, Markdown content, RSS, sitemap, and working Pascal code highlighting.
+        </p>
       </aside>
     </div>
   </section>
 
   <section class="section">
     <div class="container">
-      <div class="section-header">
-        <div>
-          <h2 class="section-title">Built for developers who ship.</h2>
-          <p class="section-copy">No theater, no fog machine, no mythical silver bullet. Just practical notes from the workshop floor.</p>
-        </div>
+      <div class="section-head">
+        <h2>Latest posts</h2>
+        <a href="/blog/">View all</a>
       </div>
 
-      <div class="feature-grid">
-        {features.map((feature) => (
-          <article class="feature-card">
-            <div class="feature-icon">{feature.icon}</div>
-            <h3>{feature.title}</h3>
-            <p>{feature.copy}</p>
-          </article>
-        ))}
-      </div>
-    </div>
-  </section>
+      <div class="post-feed">
+        {
+          posts.map((post) => (
+            <article class="post-row">
+              <div>
+                <a href={`/blog/${post.id}/`}>
+                  <h3>{post.data.title}</h3>
+                </a>
+                <p>{post.data.description}</p>
+                <div class="post-meta">
+                  <span>{post.data.pubDate.toLocaleDateString('en-US')}</span>
+                  <span>•</span>
+                  <span>{post.data.author}</span>
+                </div>
+              </div>
 
-  <section class="section">
-    <div class="container">
-      <div class="section-header">
-        <div>
-          <h2 class="section-title">Latest notes</h2>
-          <p class="section-copy">Fresh Delphi and Object Pascal posts, trimmed for actual engineering work.</p>
-        </div>
-        <a class="button button-secondary" href="/blog/">View all posts</a>
-      </div>
-
-      <div class="post-grid">
-        {posts.map((post) => (
-          <article class="post-card">
-            <div class="post-meta">
-              <span>{post.data.pubDate.toLocaleDateString('en-US')}</span>
-              <span>•</span>
-              <span>{post.data.author}</span>
-            </div>
-            <a href={`/blog/${post.id}/`}>
-              <h3>{post.data.title}</h3>
-            </a>
-            <p>{post.data.description}</p>
-            <div class="tag-row">
-              {post.data.tags.slice(0, 3).map((tag) => <span class="tag">{tag}</span>)}
-            </div>
-            <a class="read-more" href={`/blog/${post.id}/`}>Read note →</a>
-          </article>
-        ))}
+              <div class="post-tags">
+                {post.data.tags.slice(0, 3).map((tag) => (
+                  <span class="tag">{tag}</span>
+                ))}
+              </div>
+            </article>
+          ))
+        }
       </div>
     </div>
   </section>

@@ -7,40 +7,42 @@ const posts = (await getCollection('blog', ({ data }) => {
 })).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 ---
 
-<BaseLayout title="Blog | Delphi Daily" description="Delphi Daily articles about Delphi, Object Pascal, VCL, FireDAC, SQL Server, and native Windows development.">
-  <section class="page-hero">
+<BaseLayout title="Blog | Delphi Daily" description="Delphi, Object Pascal, VCL, FireDAC, and real-world software engineering posts.">
+  <section class="article-header">
     <div class="container">
-      <p class="eyebrow">Articles</p>
-      <h1 class="page-title"><span class="gradient-text">Delphi notes</span> for production builders.</h1>
-      <p class="page-lead">
-        Practical tutorials, field notes, snippets, and engineering decisions for Delphi and Object Pascal developers.
-      </p>
+      <p class="kicker">Archive</p>
+      <h1>Blog</h1>
+      <p class="article-description">Delphi and Object Pascal notes for developers who ship real applications.</p>
     </div>
   </section>
 
-  <section>
-    <div class="container blog-list">
-      {posts.map((post) => (
-        <article class="post-card">
-          <div class="post-meta">
-            <span>{post.data.pubDate.toLocaleDateString('en-US')}</span>
-            <span>•</span>
-            <span>{post.data.author}</span>
-          </div>
+  <section class="section">
+    <div class="container">
+      <div class="post-feed">
+        {
+          posts.map((post) => (
+            <article class="post-row">
+              <div>
+                <a href={`/blog/${post.id}/`}>
+                  <h2>{post.data.title}</h2>
+                </a>
+                <p>{post.data.description}</p>
+                <div class="post-meta">
+                  <span>{post.data.pubDate.toLocaleDateString('en-US')}</span>
+                  <span>•</span>
+                  <span>{post.data.author}</span>
+                </div>
+              </div>
 
-          <a href={`/blog/${post.id}/`}>
-            <h2>{post.data.title}</h2>
-          </a>
-
-          <p>{post.data.description}</p>
-
-          <div class="tag-row">
-            {post.data.tags.map((tag) => <span class="tag">{tag}</span>)}
-          </div>
-
-          <a class="read-more" href={`/blog/${post.id}/`}>Read article →</a>
-        </article>
-      ))}
+              <div class="post-tags">
+                {post.data.tags.map((tag) => (
+                  <span class="tag">{tag}</span>
+                ))}
+              </div>
+            </article>
+          ))
+        }
+      </div>
     </div>
   </section>
 </BaseLayout>

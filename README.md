@@ -1,14 +1,24 @@
 # Delphi Daily Astro Blog
 
-A fast, minimal Astro blog template for **Delphi Daily**.
+Clean Medium-style Astro blog template for **DelphiDaily.com**.
 
-**Slogan:** Practical Delphi. Real-World Code. Every Day.
+## What is included
 
-## Local setup
+- Astro 5 project
+- Clean editorial design
+- Blog archive
+- Blog post page
+- About page
+- RSS feed
+- Sitemap integration
+- Working Shiki syntax highlighting
+- Pascal code fences for Delphi examples
+
+## Run locally
 
 ```powershell
-npm install
-npm run dev
+npm.cmd install
+npm.cmd run dev
 ```
 
 Open:
@@ -20,37 +30,33 @@ http://localhost:4321
 ## Build
 
 ```powershell
-npm run build
-npm run preview
+npm.cmd run build
+npm.cmd run preview
 ```
 
-## Vercel settings
+## Important: Delphi code highlighting
+
+Use `pascal` instead of `delphi` in Markdown code fences:
+
+````md
+```pascal
+procedure TMainForm.Button1Click(Sender: TObject);
+begin
+  ShowMessage('Hello');
+end;
+```
+````
+
+The global CSS intentionally does not override `.astro-code span` colors, so Shiki token colors stay visible.
+
+## Deploy to Vercel
+
+Recommended settings:
 
 ```text
 Framework Preset: Astro
 Root Directory: ./
 Build Command: npm run build
 Output Directory: dist
-Install Command: Auto / blank
-Environment Variables: blank
+Install Command: empty / auto
 ```
-
-## Add a new post
-
-Create a new Markdown file under:
-
-```text
-src/content/blog/
-```
-
-Example:
-
-```text
-src/content/blog/how-to-connect-delphi-to-sql-server.md
-```
-
-## License
-
-Source code is licensed under the MIT License.
-
-Blog posts, written content, and original images are licensed under CC BY 4.0, unless otherwise noted.

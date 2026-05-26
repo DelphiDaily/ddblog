@@ -5,10 +5,12 @@ node_modules/
 dist/
 .astro/
 
-# environment
+# env files
 .env
 .env.*
 
-# system
+# OS / editor
 .DS_Store
 Thumbs.db
+.vscode/*
+!.vscode/extensions.json

@@ -1,0 +1,26 @@
+---
+import BaseLayout from './BaseLayout.astro';
+
+const { post } = Astro.props;
+const pageTitle = `${post.data.title} | Delphi Daily`;
+---
+
+<BaseLayout title={pageTitle} description={post.data.description}>
+  <header class="article-header">
+    <div class="reading-container">
+      <p class="kicker">Delphi Daily</p>
+      <h1>{post.data.title}</h1>
+      <p class="article-description">{post.data.description}</p>
+
+      <div class="post-meta">
+        <span>{post.data.pubDate.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}</span>
+        <span>•</span>
+        <span>{post.data.author}</span>
+      </div>
+    </div>
+  </header>
+
+  <article class="reading-container article-content">
+    <slot />
+  </article>
+</BaseLayout>

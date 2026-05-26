@@ -1,23 +1,37 @@
 ---
 title: "Connecting Delphi to SQL Server with FireDAC"
-description: "A simple FireDAC connection example for SQL Server applications built with Delphi."
+description: "A minimal FireDAC connection example for SQL Server projects."
 pubDate: 2026-05-27
 author: "Ali Yeşiloğlu"
 tags: ["Delphi", "FireDAC", "SQL Server"]
 draft: false
 ---
 
-FireDAC is a practical choice for Delphi applications that work heavily with relational databases.
-
-## Example connection setup
+FireDAC is a practical database access layer for Delphi applications. A clean connection setup makes the rest of the data layer easier to maintain.
 
 ```pascal
-FDConnection1.DriverName := 'MSSQL';
-FDConnection1.Params.Values['Server'] := 'localhost';
-FDConnection1.Params.Values['Database'] := 'ELAS_DEV';
-FDConnection1.Params.Values['User_Name'] := 'sa';
-FDConnection1.Params.Values['Password'] := 'your-password';
-FDConnection1.Connected := True;
+uses
+  FireDAC.Comp.Client,
+  FireDAC.Stan.Def,
+  FireDAC.Phys.MSSQL;
+
+procedure ConfigureConnection(const AConnection: TFDConnection);
+begin
+  AConnection.Params.Clear;
+  AConnection.Params.DriverID := 'MSSQL';
+  AConnection.Params.Database := 'DATABASE_NAME';
+  AConnection.Params.UserName := 'sa';
+  AConnection.Params.Password := 'your-password';
+  AConnection.Params.Values['Server'] := 'localhost';
+  AConnection.LoginPrompt := False;
+  AConnection.Connected := True;
+end;
 ```
 
-In a real application, keep credentials outside the source code and use configuration files or environment-specific settings.
+For production code, keep credentials outside the source code and centralize connection creation behind a small factory or service.
+
+```sql
+SELECT
+  DB_NAME() AS DatabaseName,
+  @@VERSION AS SqlServerVersion;
+```

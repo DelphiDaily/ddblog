@@ -7,25 +7,43 @@ tags: ["Delphi", "Object Pascal", "VCL"]
 draft: false
 ---
 
-Delphi is still one of the most productive tools for building native Windows database applications.
+Delphi remains one of the most productive environments for building native Windows database applications. It gives you a visual designer, a mature component model, and direct access to the operating system when you need it.
 
-## Hello Delphi
+## A small VCL example
+
+Use `pascal` as the code fence language. Shiki recognizes it and Astro will colorize it correctly.
 
 ```pascal
-procedure TMainForm.Button1Click(Sender: TObject);
+unit MainForm;
+
+interface
+
+uses
+  System.SysUtils,
+  Vcl.Forms,
+  Vcl.Dialogs;
+
+type
+  TMainForm = class(TForm)
+  public
+    procedure SayHello;
+  end;
+
+implementation
+
+procedure TMainForm.SayHello;
 begin
   ShowMessage('Hello from Delphi Daily!');
 end;
+
+end.
 ```
 
-This blog will focus on practical Delphi, Object Pascal, VCL, FireDAC, SQL Server, and real-world software development.
+## What this blog will cover
 
-## What will this blog cover?
-
-- Delphi and Object Pascal
-- VCL applications
-- FireDAC and database connectivity
+- Delphi and Object Pascal fundamentals
+- VCL patterns
+- FireDAC and database access
 - SQL Server integration
-- REST APIs
-- Windows Services
-- Production-ready patterns
+- Windows services
+- Real-world application architecture
