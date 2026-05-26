@@ -13,7 +13,7 @@ Windows services are useful when a process must keep running without a user sess
 
 Do not place all business logic inside the service class. Keep the service as a host and move the actual work into testable classes.
 
-```delphi
+```pascal
 procedure TImportService.ServiceExecute(Sender: TService);
 begin
   while not Terminated do
