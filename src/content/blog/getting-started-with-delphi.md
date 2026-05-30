@@ -2,7 +2,7 @@
 title: "Getting Started with Delphi"
 description: "A practical introduction to Delphi, Object Pascal, and native Windows development."
 pubDate: 2026-05-26
-author: "Ali Yeşiloğlu"
+author: "DD"
 tags: ["Delphi", "Object Pascal", "VCL"]
 draft: false
 ---

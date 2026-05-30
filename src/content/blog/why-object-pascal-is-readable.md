@@ -2,7 +2,7 @@
 title: "Why Object Pascal Is Still Readable"
 description: "A short note on why Delphi syntax works well for long-lived business applications."
 pubDate: 2026-05-28
-author: "Ali Yeşiloğlu"
+author: "DD"
 tags: ["Object Pascal", "Clean Code"]
 draft: false
 ---

@@ -2,7 +2,7 @@
 title: "Using Interfaces in Object Pascal"
 description: "How interfaces can help organize Delphi code without turning a business application into an abstract maze."
 pubDate: 2026-05-24
-author: "Ali Yeşiloğlu"
+author: "DD"
 tags: ["Object Pascal", "Interfaces", "Architecture"]
 draft: false
 ---

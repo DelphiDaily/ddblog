@@ -2,7 +2,7 @@
 title: "Connecting Delphi to SQL Server with FireDAC"
 description: "A clean starting point for using FireDAC with SQL Server in Delphi applications."
 pubDate: 2026-05-25
-author: "Ali Yeşiloğlu"
+author: "DD"
 tags: ["Delphi", "FireDAC", "SQL Server", "Database"]
 draft: false
 ---

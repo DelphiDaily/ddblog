@@ -2,7 +2,7 @@
 title: "Building Background Tools with Delphi Windows Services"
 description: "A practical note about when to use Windows services in Delphi and how to keep them observable."
 pubDate: 2026-05-23
-author: "Ali Yeşiloğlu"
+author: "DD"
 tags: ["Delphi", "Windows Service", "Integration"]
 draft: false
 ---
